@@ -1,8 +1,8 @@
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-from keras import layers
-import matplotlib.pyplot as plt
+from tensorflow.keras import layers
+
 
 
 def test_image_preprocessing(images,

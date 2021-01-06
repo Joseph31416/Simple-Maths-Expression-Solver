@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
-from keras import layers
+from tensorflow.keras import layers
 
 
 class CTCLayer(layers.Layer):

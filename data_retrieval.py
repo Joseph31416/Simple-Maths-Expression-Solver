@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
-from keras import layers
+from tensorflow.keras import layers
 
 
 def train_label_retrieval2():
