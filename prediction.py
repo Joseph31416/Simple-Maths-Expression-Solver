@@ -2,13 +2,13 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-
+import matplotlib.pyplot as plt
 
 
 def test_image_preprocessing(images,
                              labels,
                              char_to_num,
-                             batch_size=128):
+                             batch_size=1):
     """
     Converts numpy array to tensorflow object
     images:  (20000, 200, 50, 3) numpy array
@@ -117,13 +117,13 @@ def calculation(cat_tuple):
     else:
         return 'UKN'
 
-# def result_visualisation(test_dataset):
-#     for batch in test_dataset.take(1):
-#         image = batch["image"]
-#         img = (image[0, :, :, 0] * 255).numpy().astype(np.uint8)
-#         img = img.T
-#         plt.imshow(img, cmap="gray")
-#     plt.show()
+def result_visualisation(test_dataset):
+    for batch in test_dataset.take(1):
+        image = batch["image"]
+        img = (image[0, :, :, 0] * 255).numpy().astype(np.uint8)
+        img = img.T
+        plt.imshow(img, cmap="gray")
+    plt.show()
 
 
 def get_predictions(model, image):

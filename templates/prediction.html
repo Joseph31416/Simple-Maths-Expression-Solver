@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Prediction Page</title>
     <header>
-        <h1>Predictions</h1>
+        <h1>Prediction</h1>
     </header>
-    <p>It is {{ pred }}</p>
+    <p>It is: {{ output["pred"] }}</p>
+    <img src="/uploads/{{ output['fname'] }}">
+    <form action="/">
+        <input type="submit" value="Back">
+    </form>
 </head>
 <body>
 

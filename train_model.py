@@ -8,7 +8,7 @@ def train_model(
         epochs=100,
         patience=10,
         **kwargs
-        ):
+):
     callbacks_list = [keras.callbacks.EarlyStopping(monitor='val_loss',
                                                     patience=patience,
                                                     restore_best_weights=True)]
@@ -16,7 +16,7 @@ def train_model(
     saved_model_dir = kwargs.get('saved_model_dir',
                                  "/content/gdrive/MyDrive/Colab_Notebooks/CRNN_Augmented/saved_models/predictions_CRNN_Aug1.h5")
     load_model_dir = kwargs.get('load_model_dir', saved_model_dir)
-    
+
     if not new:
         model.load_weights(load_model_dir)
     else:
