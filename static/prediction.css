@@ -1,0 +1,56 @@
+* {
+  font-family: "Quicksand", sans-serif;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#main-text {
+  font-size: 28px;
+  padding: 14em;
+}
+
+#side-text {
+  font-size: 20px;
+}
+
+#help-text {
+  font-size: 18px;
+  padding: 1em;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+li {
+  display: inline;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+header {
+  min-height: 50px;
+  padding: 1.5em;
+}
+
+main {
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+footer {
+  padding: 0em;
+  min-height: 50px;
+  margin-top: auto;
+}
