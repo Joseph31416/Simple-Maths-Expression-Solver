@@ -24,22 +24,25 @@ def predict():
     else:
         return redirect('/')
     fname = img.filename
-    img = cv2.imread(f"./uploads/{img.filename}", cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread(f"./uploads/{img.filename}", 0)
     def resize_image(img):
         """
         Converts uploaded image to a (1, 200, 50, 1) numpy array, with 1 or 0 entries
         """
-        img = cv2.resize(img, (200, 50))
-        img = img.transpose([1, 0])
-        for a in range(200):
-            for b in range(50):
-                if img[a][b] < 225:
-                    img[a][b] = 0
+        for a in range(img.shape[0]):
+            for b in range(img.shape[1]):
+                if img[a][b] > 220:
+                    img[a][b] = 255
                 else:
-                    img[a][b] = 1
-        img = img[:, :, np.newaxis]
-        img = np.array([img])
-        return img
+                    img[a][b] = 0
+        img_neg = cv2.bitwise_not(img)
+        coords = cv2.findNonZero(img_neg)
+        x, y, w, h = cv2.boundingRect(coords)
+        out = img[y:y + h, x:x + w]
+        out = cv2.resize(out, (200, 50), interpolation=cv2.INTER_CUBIC)
+        out = out.transpose([1, 0])
+        out = out[:, :, np.newaxis]
+        return np.array([out]) / 255
     image = resize_image(img)
     model = build_model(200, 50)
     model.load_weights("final.h5")
@@ -53,6 +56,7 @@ def predict():
 def upload(filename):
     return send_from_directory('uploads', filename)
 
-# start the flask app, allow remote connections
+
 app.run()
-# app.run(host='0.0.0.0')
+#set host to "0.0.0.0" for remote connections
+#app.run(host="0.0.0.0")
