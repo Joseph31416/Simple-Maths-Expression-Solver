@@ -26,8 +26,10 @@
     </header>
 
     <main>
-        <p>It is: {{ output["pred"] }}</p>
-        <img src="/uploads/{{ output['fname'] }}">
+        <p>Questions with correct asnwers: {{ output["pred"]["correct"] }}</p>
+        <p>Questions with incorrect answers: {{ output["pred"]["incorrect"] }}</p>
+        <p>Total score: {{ output["pred"]["score"] }}</p>
+        <img src="/uploads/{{ output['fname'] }}" witdh="256px">
         <form action="/">
             <input type="submit" value="Back">
         </form>
